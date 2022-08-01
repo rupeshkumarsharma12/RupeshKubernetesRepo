@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetnxt
+  namespace: kubeshruthick
+  labels:
+    app: dotnetnxt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnetnxt
+  template:
+    metadata:
+      labels:
+        app: dotnetnxt
+    spec:
+      containers:
+        - name: dotnetnxt
+          image: prdctmntc.azurecr.io/shruthick:#{Release.Artifacts.kubeshruthick.BuildId}#
+         
+          ports imagePullPolicy: Always:
+            - containerPort: 5000
+            - containerPort: 5001
+      imagePullSecrets:
+        - name: prdctmntc
+--- 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnetnxt
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http5
+      port: 5000
+    - name: http51
+      port: 5001
+  selector:
+    app: dotnetnxt
