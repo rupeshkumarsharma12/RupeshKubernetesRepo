@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnetnxt
-  namespace: kubeshruthick
+  namespace: rupeshkubernetes
   labels:
     app: dotnetnxt
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: dotnetnxt
-          image: prdctmntc.azurecr.io/shruthick:#{Release.Artifacts.kubeshruthick.BuildId}#
+          image: prdctmntc.azurecr.io/rupeshkubernetes:#{Release.Artifacts.rupeshkubernetes.BuildId}#
          
           ports imagePullPolicy: Always:
             - containerPort: 5000

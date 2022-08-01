@@ -4,7 +4,7 @@ version: '3.4'
 
 services:
   iotapi:
-    image: iotapi
+    image: MYIOTDevice
     build:
       context: .
       dockerfile: ./Dockerfile
